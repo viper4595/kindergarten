@@ -1,0 +1,24 @@
+dependencies: \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Executors/RCTJSCExecutor.mm \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Executors/RCTJSCExecutor.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Base/RCTJavaScriptExecutor.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/osxvn/Desktop/kindergarten/ios/build/Build/Products/Debug-iphonesimulator/include/cxxreact/JSBundleType.h \
+  /Users/osxvn/Desktop/kindergarten/ios/build/Build/Products/Debug-iphonesimulator/include/jschelpers/JavaScriptCore.h \
+  /Users/osxvn/Desktop/kindergarten/ios/build/Build/Products/Debug-iphonesimulator/include/jschelpers/JSCWrapper.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Modules/JSCSamplingProfiler.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Base/RCTBridge+Private.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Modules/RCTDevMenu.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Executors/RCTJSCErrorHandling.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Profiler/RCTJSCProfiler.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Base/RCTPerformanceLogger.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Profiler/RCTProfile.h \
+  /Users/osxvn/Desktop/kindergarten/node_modules/react-native/React/Base/RCTUtils.h
