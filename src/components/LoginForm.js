@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { View, Image } from 'react-native';
-import { CardSection, Input, Button, Spinner } from './common';
-import { emailChanged, passwordChanged, loginUser } from '../actions';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {View, Image, KeyboardAvoidingView} from 'react-native';
+import {CardSection, Input, Button, Spinner} from './common';
+import {emailChanged, passwordChanged, loginUser} from '../actions';
 
 class LoginForm extends Component {
-    componentWillMount() {
-        this.renderSplashScreen();
-    }
-
     onEmailChange(text) {
         this.props.emailChanged(text);
     }
@@ -18,70 +14,41 @@ class LoginForm extends Component {
     }
 
     onButtonPress() {
-        const email = this.props.email;
-        const password = this.props.password;
-        this.props.loginUser({ email, password });
+        const email = 'tin@test.com';
+        const password = '111111';
+        this.props.loginUser({email, password});
     }
 
     renderButton() {
         if (this.props.loading) {
-            return <Spinner size="large" />;
+            return <Spinner size="large"/>;
         }
-
         return (
-            <Button onPress={this.onButtonPress.bind(this)}>
-                LOGIN
-            </Button>
+            <Button onPress={this.onButtonPress.bind(this)}>LOGIN</Button>
         );
     }
 
-    renderSplashScreen() {
-        return (
-            <View style={{ backgroundColor: '#ff5763'}}>
-                <Image />
-                <Image
-                    source={require('assets/icons/logoLogin@3x.png')}
-                    style={{
-                        height: 235,
-                        width: 134,
-                    }}
-                    resizeMode={'contain'}
-                />
-            </View>
-        );
-    };
-
     render() {
         return (
-            <View style={{alignItems: 'center'}}>
+            <KeyboardAvoidingView style={{paddingLeft: 50, paddingRight: 50}} behavior='position'>
 
-                <View>
+                <CardSection style={{ justifyContent: 'center', borderBottomWidth: 0}}>
                     <Image
-                        source={require('assets/icons/logoLogin@3x.png')}
                         style={{
                             height: 235,
                             width: 230,
                             marginTop: 80
                         }}
                         resizeMode={'contain'}
+                        source={require('assets/icons/logoLogin@3x.png')}
                     />
-                </View>
+                </CardSection>
 
-                <CardSection
-                    style={{
-                        marginTop: 70,
-                        marginLeft: 50,
-                        marginRight: 50,
-                    }}
-                >
+                <CardSection style={{marginTop: 70}}>
                     <Image
-                        source={require('assets/icons/icMail@3x.png')}
-                        style={{
-                                height: 23,
-                                width: 23,
-                                marginTop: 10
-                        }}
+                        style={{height: 23, width: 23, marginTop: 10}}
                         resizeMode={'contain'}
+                        source={require('assets/icons/icMail@3x.png')}
                     />
 
                     <Input
@@ -91,20 +58,11 @@ class LoginForm extends Component {
                     />
                 </CardSection>
 
-                <CardSection
-                    style={{
-                        marginTop: 5,
-                        marginLeft: 50,
-                        marginRight: 50}}
-                >
+                <CardSection>
                     <Image
-                        source={require('assets/icons/icLock@3x.png')}
-                        style={{
-                            height: 23,
-                            width: 23,
-                            marginTop: 10
-                        }}
+                        style={{height: 23, width: 23, marginTop: 10}}
                         resizeMode={'contain'}
+                        source={require('assets/icons/icLock@3x.png')}
                     />
                     <Input
                         secureTextEntry
@@ -115,26 +73,17 @@ class LoginForm extends Component {
                     />
                 </CardSection>
 
-                <CardSection style={{
-                    marginTop: 30,
-                    marginLeft: 50,
-                    marginRight: 50,
-                    borderBottomWidth: 0 }}
-                >
+                <CardSection style={{marginTop: 30, borderBottomWidth: 0}}>
                     {this.renderButton()}
                 </CardSection>
-
-            </View>
+            </KeyboardAvoidingView>
         );
     }
 }
 
-const mapStateToProps = ({ auth }) => {
-    const { email, password, error, loading } = auth;
-    return { email, password, error, loading };
+const mapStateToProps = ({auth}) => {
+    const {email, password, error, loading} = auth;
+    return {email, password, error, loading};
 };
 
-export default connect(mapStateToProps, {
-    emailChanged,
-    passwordChanged,
-    loginUser })(LoginForm);
+export default connect(mapStateToProps, {emailChanged, passwordChanged, loginUser})(LoginForm);

@@ -6,7 +6,6 @@ import { Text } from 'react-native';
 class Auth extends Component {
     componentWillMount() {
         this.props.logOut();
-        console.log('Mounted');
     }
     render() {
         return <Text />;
