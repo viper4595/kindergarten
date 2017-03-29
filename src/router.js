@@ -74,7 +74,6 @@ const RouterComponent = () => {
 
                 <Scene
                     key="filterFavourite"
-                    title="Filter by last updated"
                     navigationBarStyle={{ backgroundColor: 'white' }}
                     component={FavouriteList}
                     leftTitle="Return"

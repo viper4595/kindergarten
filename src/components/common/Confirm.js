@@ -34,14 +34,13 @@ const Confirm = ({ children, visible, onAccept, onDecline }) => {
 const styles = {
     cardSectionStyle: {
         justifyContent: 'center',
-        backgroundColor: 'white',
         marginLeft: 30,
         marginRight: 30,
         borderRadius: 15
     },
     textStyle: {
         alignSelf: 'center',
-        color: '#007aff',
+        color: 'white',
         fontSize: 16,
         fontWeight: '600',
         paddingTop: 10,

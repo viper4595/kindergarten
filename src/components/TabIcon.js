@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
 
 class TabIcon extends Component {
+
+
     render() {
         let icon = '';
         switch (this.props.title) {
@@ -18,15 +20,16 @@ class TabIcon extends Component {
                 break;
         }
 
+
         return (
-            <View style={{ flex: 1, backgroundColor: 'white' }}>
+            <View style={{ height: 60, width: 130, backgroundColor: 'white', alignItem: 'center' }}>
                     <Image
                         source={icon}
                         style={{
                             height: 26,
                             width: 26,
-                            flex: 1,
-                            marginTop: 10,
+                            marginLeft: 50,
+                            marginTop: 15,
                         }}
                         resizeMode={'contain'}
                     />
