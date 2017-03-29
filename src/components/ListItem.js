@@ -26,7 +26,7 @@ class ListItem extends Component {
     }
 
     componentDidMount() {
-        const { image } = this.props.kindergarten;
+        const { image } = this.props.item;
         this.getImageUrl(image);
     }
 
@@ -48,17 +48,30 @@ class ListItem extends Component {
     }
 
     isExist() {
-        const { id } = this.props.kindergarten;
-        return this.props.favouriteIdList.some(val => val === id);
+        const { id } = this.props.item;
+        return this.props.favouriteIndex.some(val => val === id);
+    }
+
+    getFavouriteUid() {
+        const { id } = this.props.item;
+        const list = this.props.favourites;
+
+        for (let i = 0; i < list.length; i++) {
+            if (id === list[i].id) {
+                return list[i].uid;
+            }
+        }
     }
 
     favouriteHandler() {
+        const { uid } = this.props.item;
         if (this.props.itemType === 'kindergarten') {
             if (!this.isExist()) {
-                this.props.addToFavourite(this.props.kindergarten);
+                this.props.addToFavourite(this.props.item);
+            } else {
+                this.props.favouriteDelete({ uid: this.getFavouriteUid() });
             }
         } else {
-            const { uid } = this.props.kindergarten;
             this.props.favouriteDelete({ uid });
         }
     }
@@ -66,7 +79,7 @@ class ListItem extends Component {
     renderDetails(address, phone, last_updated) {
         const { containerStyle, firstContentStyle, contentStyle, imageStyle, circleStyle } = styles;
 
-        const path = (this.props.itemType === 'favourite')
+        const path = (this.props.itemType === 'favourite' || this.isExist())
             ? require('assets/icons/icStarChoose@3x.png')
             : require('assets/icons/icStarNotChoose@3x.png');
 
@@ -134,7 +147,7 @@ class ListItem extends Component {
     }
 
     render() {
-        const { id, title, address, phone, last_updated } = this.props.kindergarten;
+        const { id, title, address, phone, last_updated } = this.props.item;
         const { url } = this.state;
         return (
             <TouchableOpacity onPress={() => this.props.selectKindergarten(id)} >
@@ -226,14 +239,20 @@ const styles = {
 };
 
 const mapStateToProps = (state, props) => {
-    const expanded = state.selectedKindergartenId === props.kindergarten.id;
-    const favouriteIdList = _.map(state.favourites, (fav) => {
+    const expanded = state.selectedKindergartenId === props.item.id;
+
+    const kindergartenIds = _.map(state.kindergartens, (k) => {
+        return k.id;
+    });
+    const favouriteIndex = _.map(state.favourites, (fav) => {
         return fav.id;
     });
+
     const favourites = _.map(state.favourites, (val, uid) => {
         return { ...val, uid };
     });
-    return { expanded, favourites, favouriteIdList };
+
+    return { expanded, favourites, favouriteIndex };
 };
 
 export default connect(mapStateToProps, {

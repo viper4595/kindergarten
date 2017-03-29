@@ -19,18 +19,20 @@ class TabIcon extends Component {
         }
 
         return (
-            <View style={{ flex: 1, backgroundColor: '#ff5763' }}>
-                <Image
-                    source={icon}
-                    style={{
-                        height: 24,
-                        width: 24,
-                        flex: 1,
-                        marginTop: 10
-                    }}
-                    resizeMode={'contain'}
-                    position='absolute'
-                />
+            <View style={{ flex: 1 }}>
+                <View style={{ backgroundColor: '#ff5763'  }}>
+                    <Image
+                        source={icon}
+                        style={{
+                            height: 26,
+                            width: 26,
+                            flex: 1,
+                            marginTop: 10,
+                        }}
+                        resizeMode={'contain'}
+                        position='absolute'
+                    />
+                </View>
             </View>
         );
     }

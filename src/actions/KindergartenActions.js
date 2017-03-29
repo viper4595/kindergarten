@@ -26,7 +26,6 @@ export const selectKindergarten = (id) => {
 
 export const addToFavourite = (fav) => {
     const { currentUser } = firebase.auth();
-
     return (dispatch) => {
         firebase.database().ref(`/users/${currentUser.uid}/favourites`)
             .push(fav)
@@ -48,7 +47,7 @@ export const favouriteFetch = () => {
 };
 
 export const favouriteDelete = ({ uid }) => {
-    console.log('yo');
+    console.log({ uid });
     const { currentUser } = firebase.auth();
     return () => {
         firebase.database().ref(`/users/${currentUser.uid}/favourites/${uid}`).remove();

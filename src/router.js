@@ -23,7 +23,6 @@ const RouterComponent = () => {
                     height: 60,
                     borderTop: 1.5,
                     borderColor: '#DDD',
-                    backgroundColor: 'white'
                 }}
 
             >
@@ -36,6 +35,7 @@ const RouterComponent = () => {
                     component={KindergartenList}
                     onRight={() => alert('Right button')}
                     rightTitle="Filter"
+                    selected='false'
                 />
                 <Scene
                     key="Favourite"
