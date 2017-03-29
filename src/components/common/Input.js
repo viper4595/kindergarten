@@ -23,7 +23,7 @@ const styles = {
 		color: '#000',
 		paddingLeft: 14,
 		paddingRight: 5,
-		paddingTop: 10,
+		paddingTop: 5,
 		fontSize: 16,
 		lineHeight: 23,
 		flex: 2,

@@ -46,7 +46,7 @@ class LoginForm extends Component {
 
                 <CardSection style={{marginTop: 70}}>
                     <Image
-                        style={{height: 23, width: 23, marginTop: 10}}
+                        style={{height: 20, width: 20, marginTop: 10}}
                         resizeMode={'contain'}
                         source={require('assets/icons/icMail@3x.png')}
                     />
@@ -60,7 +60,7 @@ class LoginForm extends Component {
 
                 <CardSection>
                     <Image
-                        style={{height: 23, width: 23, marginTop: 10}}
+                        style={{height: 20, width: 20, marginTop: 10}}
                         resizeMode={'contain'}
                         source={require('assets/icons/icLock@3x.png')}
                     />

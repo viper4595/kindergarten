@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, TouchableOpacity} from 'react-native';
 
 class TabIcon extends Component {
     render() {
@@ -19,8 +19,7 @@ class TabIcon extends Component {
         }
 
         return (
-            <View style={{ flex: 1 }}>
-                <View style={{ backgroundColor: '#ff5763'  }}>
+            <View style={{ flex: 1, backgroundColor: 'white' }}>
                     <Image
                         source={icon}
                         style={{
@@ -30,9 +29,7 @@ class TabIcon extends Component {
                             marginTop: 10,
                         }}
                         resizeMode={'contain'}
-                        position='absolute'
                     />
-                </View>
             </View>
         );
     }

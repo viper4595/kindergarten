@@ -47,11 +47,6 @@ class ListItem extends Component {
             .then((url) => this.setState({ url }));
     }
 
-    isExist() {
-        const { id } = this.props.item;
-        return this.props.favouriteIndex.some(val => val === id);
-    }
-
     getFavouriteUid() {
         const { id } = this.props.item;
         const list = this.props.favourites;
@@ -61,6 +56,11 @@ class ListItem extends Component {
                 return list[i].uid;
             }
         }
+    }
+
+    isExist() {
+        const { id } = this.props.item;
+        return this.props.favouriteIndex.some(val => val === id);
     }
 
     favouriteHandler() {
@@ -241,9 +241,6 @@ const styles = {
 const mapStateToProps = (state, props) => {
     const expanded = state.selectedKindergartenId === props.item.id;
 
-    const kindergartenIds = _.map(state.kindergartens, (k) => {
-        return k.id;
-    });
     const favouriteIndex = _.map(state.favourites, (fav) => {
         return fav.id;
     });

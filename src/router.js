@@ -1,5 +1,5 @@
 import React from 'react';
-import { Scene, Router } from 'react-native-router-flux';
+import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
 import tabIcon from './components/TabIcon';
 import Auth from './components/Auth';
@@ -8,6 +8,7 @@ import FavouriteList from './components/Favourite/FavouriteList';
 import KindergartenList from './components/Data/KindergartenList';
 
 const RouterComponent = () => {
+
     return (
         <Router >
             <Scene key="intro" title="Login">
@@ -22,7 +23,7 @@ const RouterComponent = () => {
                 tabBarStyle={{
                     height: 60,
                     borderTop: 1.5,
-                    borderColor: '#DDD',
+                    borderColor: '#DDD'
                 }}
 
             >
@@ -33,9 +34,10 @@ const RouterComponent = () => {
                     navigationBarStyle={{ backgroundColor: 'white' }}
                     titleStyle={{ color: 'white' }}
                     component={KindergartenList}
-                    onRight={() => alert('Right button')}
+                    onRight={() => { alert('Filter by last updated'); Actions.filterHome(); }}
                     rightTitle="Filter"
                     selected='false'
+                    hideBackImage
                 />
                 <Scene
                     key="Favourite"
@@ -44,9 +46,10 @@ const RouterComponent = () => {
                     navigationBarStyle={{ backgroundColor: 'white' }}
                     titleStyle={{ color: 'white' }}
                     component={FavouriteList}
-                    onRight={() => alert('Right button')}
+                    onRight={() => Actions.filterFavourite()}
                     rightTitle="Filter"
-                    unmountScene
+                    leftTitle="Return"
+                    onLeft={() => Actions.Home()}
                 />
                 <Scene
                     key="Logout"
@@ -56,6 +59,26 @@ const RouterComponent = () => {
                     titleStyle={{ color: 'white' }}
                     component={Auth}
                     rightTitle="Filter"
+                    unmountScenes
+                />
+
+                <Scene
+                    key="filterHome"
+                    title="Filter by last updated"
+                    navigationBarStyle={{ backgroundColor: 'white' }}
+                    component={KindergartenList}
+                    leftTitle="Return"
+                    onLeft={() => Actions.Home()}
+                    unmountScenes
+                />
+
+                <Scene
+                    key="filterFavourite"
+                    title="Filter by last updated"
+                    navigationBarStyle={{ backgroundColor: 'white' }}
+                    component={FavouriteList}
+                    leftTitle="Return"
+                    onLeft={() => Actions.Home()}
                     unmountScenes
                 />
             </Scene>
