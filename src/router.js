@@ -46,6 +46,7 @@ const RouterComponent = () => {
                     component={FavouriteList}
                     onRight={() => alert('Right button')}
                     rightTitle="Filter"
+                    unmountScene
                 />
                 <Scene
                     key="Logout"
@@ -54,7 +55,6 @@ const RouterComponent = () => {
                     navigationBarStyle={{ backgroundColor: 'white' }}
                     titleStyle={{ color: 'white' }}
                     component={Auth}
-                    onRight={() => alert('Right button')}
                     rightTitle="Filter"
                     unmountScenes
                 />

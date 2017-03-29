@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import firebase from 'firebase';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -9,7 +10,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { CardSection } from './common';
-import { selectKindergarten, addToFavourite, favouriteDelete } from '../actions';
+import { selectKindergarten, addToFavourite, favouriteDelete, favouriteFetch } from '../actions';
 
 class ListItem extends Component {
 
@@ -18,6 +19,10 @@ class ListItem extends Component {
         this.state = {
             url: undefined
         };
+    }
+
+    componentWillMount() {
+        this.props.favouriteFetch();
     }
 
     componentDidMount() {
@@ -42,12 +47,19 @@ class ListItem extends Component {
             .then((url) => this.setState({ url }));
     }
 
+    isExist() {
+        const { id } = this.props.kindergarten;
+        return this.props.favouriteIdList.some(val => val === id);
+    }
+
     favouriteHandler() {
         if (this.props.itemType === 'kindergarten') {
-            this.props.addToFavourite(this.props.kindergarten);
-        }
-        else {
-            this.props.favouriteDelete(this.props.kindergarten);
+            if (!this.isExist()) {
+                this.props.addToFavourite(this.props.kindergarten);
+            }
+        } else {
+            const { uid } = this.props.kindergarten;
+            this.props.favouriteDelete({ uid });
         }
     }
 
@@ -59,7 +71,6 @@ class ListItem extends Component {
             : require('assets/icons/icStarNotChoose@3x.png');
 
         if (this.props.expanded) {
-
             return (
                 <View style={containerStyle}>
                     <Image
@@ -123,7 +134,7 @@ class ListItem extends Component {
     }
 
     render() {
-        const { id, title, address, phone, last_updated} = this.props.kindergarten;
+        const { id, title, address, phone, last_updated } = this.props.kindergarten;
         const { url } = this.state;
         return (
             <TouchableOpacity onPress={() => this.props.selectKindergarten(id)} >
@@ -216,7 +227,17 @@ const styles = {
 
 const mapStateToProps = (state, props) => {
     const expanded = state.selectedKindergartenId === props.kindergarten.id;
-    return { expanded };
+    const favouriteIdList = _.map(state.favourites, (fav) => {
+        return fav.id;
+    });
+    const favourites = _.map(state.favourites, (val, uid) => {
+        return { ...val, uid };
+    });
+    return { expanded, favourites, favouriteIdList };
 };
 
-export default connect(mapStateToProps, { selectKindergarten, addToFavourite, favouriteDelete })(ListItem);
+export default connect(mapStateToProps, {
+    selectKindergarten,
+    addToFavourite,
+    favouriteFetch,
+    favouriteDelete })(ListItem);

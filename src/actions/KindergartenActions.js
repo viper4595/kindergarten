@@ -28,7 +28,7 @@ export const addToFavourite = (fav) => {
     const { currentUser } = firebase.auth();
 
     return (dispatch) => {
-        firebase.database().ref(`/favourites/${currentUser.uid}/`)
+        firebase.database().ref(`/users/${currentUser.uid}/favourites`)
             .push(fav)
             .then(() => {
                 dispatch({ type: ADD_TO_FAVOURITE });
@@ -40,19 +40,17 @@ export const favouriteFetch = () => {
     const { currentUser } = firebase.auth();
 
     return (dispatch) => {
-        console.log('in 1');
-        firebase.database().ref(`/favourites/${currentUser.uid}/`)
+        firebase.database().ref(`/users/${currentUser.uid}/favourites`)
             .on('value', snapshot => {
-                console.log('in 2');
                 dispatch({ type: FAVOURITE_FETCH_SUCCESS, payload: snapshot.val() });
             });
     };
 };
 
-export const favouriteDelete = ({ fav }) => {
+export const favouriteDelete = ({ uid }) => {
+    console.log('yo');
     const { currentUser } = firebase.auth();
-
     return () => {
-        firebase.database().ref(`/favourites/${currentUser.uid}/`).remove();
+        firebase.database().ref(`/users/${currentUser.uid}/favourites/${uid}`).remove();
     };
 };
